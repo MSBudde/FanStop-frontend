@@ -4,5 +4,17 @@ angular.module('fanStop')
 routes.$inject = ['$urlRouterProvider', '$stateProvider'];
 
 function routes($urlRouterProvider, $stateProvider) {
-  
+  $stateProvider
+    .state('welcome', {
+      url: '/',
+      templateUrl: 'pages/welcome.html'
+    })
+    .state('signin', {
+      url:'/sign-in',
+      templateUrl: 'pages/signin.html',
+      controller: 'signInController',
+      controllerAs: 'sign'
+    })
+
+    $urlRouterProvider.otherwise('/')
 }

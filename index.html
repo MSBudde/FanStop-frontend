@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="fanStop">
+<head>
+  <title>fanStop</title>
+  <meta charset="utf-8">
+  <!-- If you must use outside libs that aren't Angular-specific, include them BEFORE Angular. -->
+  <script src="js/jwt-decode.2.0.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+
+</head>
+<body>
+{{1+1}}
+    <main class="content" ui-view>
+      <!-- ui-router (aka ui.router) inserts templates here -->
+    </main>
+
+
+  <script src="js/app.js"></script>
+  <script src="js/app.routes.js"></script>
+  <script src="js/tokens.js"></script>
+  <script src="js/authService.js"></script>
+  <script src="js/userService.js"></script>
+  <script src="js/signin.controller.js"></script>
+</body>
+</html>
