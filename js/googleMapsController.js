@@ -21,8 +21,8 @@ function initialize() {
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
     location: sm,
-    radius: 1000,
-    type: ['sports bar']
+    radius: 750,
+    type: ['bar']
   }, processResults);
 }
 
@@ -51,7 +51,7 @@ function createMarkers(places) {
 
   for (var i = 0, place; place = places[i]; i++) {
     var image = {
-      url: place.icon,
+      url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
@@ -64,6 +64,8 @@ function createMarkers(places) {
       title: place.name,
       position: place.geometry.location
     });
+
+    placesList.innerHTML += '<li>' + place.name + '</li>';
 
     bounds.extend(place.geometry.location);
   }
