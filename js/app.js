@@ -1,1 +1,1 @@
-angular.module('fanStop', ['ui.router']);
+angular.module('fanStop', ['ui.router'])

@@ -1,0 +1,22 @@
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 950px;
+}
+
+#map {
+    height: 400px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid silver;
+}

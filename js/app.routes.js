@@ -15,6 +15,11 @@ function routes($urlRouterProvider, $stateProvider) {
       controller: 'signInController',
       controllerAs: 'sign'
     })
-
+    .state('results', {
+      url:'/results',
+      templateUrl: 'pages/results.html',
+      controller: 'googleMapsController',
+      controllerAs: 'gMaps'
+    })
     $urlRouterProvider.otherwise('/')
 }
