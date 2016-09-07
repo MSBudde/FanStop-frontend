@@ -18,7 +18,7 @@ function routes($urlRouterProvider, $stateProvider) {
     .state('results', {
       url:'/results',
       templateUrl: 'pages/results.html',
-      controller: 'googleMapsController',
+      controller: 'yelpController',
       controllerAs: 'gMaps'
     })
     $urlRouterProvider.otherwise('/')

@@ -11,7 +11,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
-  <!-- Style (optional) -->
+  <script src="/bower_components/oauth-signature/dist/oauth-signature.js"></script>
+  <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+  <script src="/bower_components/just.randomstring/just.randomstring.js"></script>
+  <!-- <script src='/path/to/angular-simple-logger/angular-simple-logger[.min].js'></script>
+  <script src='/path/to/angular-google-maps[.min].js'></script> -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFuqFzNpJnxqpGGH4gDIKTD6ENV1Imt2c&libraries=places"></script>
 
 
@@ -31,7 +35,7 @@
     <br>
     <h1> FanStop</h1>
     <main class="content" ui-view>
-      <!-- ui-router (aka ui.router) inserts templates here -->
+      <h2> loading.... </h2>
     </main>
 
 
@@ -43,5 +47,8 @@
   <script src='js/signin.controller.js'></script>
   <script src='js/NavbarCtrl.js'></script>
   <script src="js/googleMapsController.js" charset="utf-8"></script>
+  <!-- <script src="js/ngMaps.js" charset="utf-8"></script> -->
+  <script src="js/yelpFact.js" charset="utf-8"></script>
+  <script src="js/yelpController.js" charset="utf-8"></script>
 </body>
 </html>

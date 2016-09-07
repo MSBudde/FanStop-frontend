@@ -1,7 +1,6 @@
-
-<div id='map'></div>
-
-<button ng-click='gMaps.initialize()' name="button">fuck</button>
+<div map-lazy-load="https://maps.google.com/maps/api/js">
+  <ng-map center="34.0195,-118.4912" zoom="15"></ng-map>
+</div>
 <ul id='places'>
-  {{place.place.name}}
+<li ng-repeat="business in gMaps.businesses">  {{business.name}} </li>
 </ul>

@@ -1,0 +1,26 @@
+{
+  "name": "just.randomstring",
+  "version": "0.1.2",
+  "homepage": "http://workshop.rs/projects/just-randomstring",
+  "keywords": [
+    "strings",
+    "keys",
+    "random",
+    "passwords"
+  ],
+  "description": "generate random string for api keys, passwords ...",
+  "main": "just.randomstring.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kopipejst/just.randomstring.git"
+  },
+  "author": "Ivan Lazarevic",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.0",
+    "chai": "~1.6"
+  }
+}
