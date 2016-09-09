@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=Righteous';
 
 [ng\:cloak],
 [ng-cloak],
@@ -84,12 +85,13 @@ body {
   font-size: 11px;
   height: 100%;
   margin: 0;
-  background: rgba(#ffffff, 0.99);
+  /*background: url('http://i.imgur.com/K1NPmPV.jpg');
+  background-size: cover;*/
 }
 
 .wrap {
-    width: 400px;
-    height: 300px;
+    width: 800px;
+    height: 500px;
     display: table;
     overflow: hidden;
     position: absolute;
@@ -106,7 +108,8 @@ body {
     vertical-align: middle;
 }
 #fanTitle {
-    font-size: 5em;
+    font-family: 'Righteous', cursive;
+    font-size: 7em;
     color: black;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .08);
     display: inline-block;
@@ -115,9 +118,19 @@ body {
 
 }
 
+#getmap {
+  height: 400px;
+  width: 600px;
+
+}
+
+#bground {
+  background: url('http://i.imgur.com/K1NPmPV.jpg');
+}
+
 .football {
-    width: 44px;
-    height: 45px;
+    width: 75px;
+    height: 75px;
     background: url('https://cdn3.iconfinder.com/data/icons/school-icons-3/512/Football-512.png');
     background-size: contain;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .08);
@@ -145,8 +158,8 @@ body {
     }
 }
     .beer {
-    width: 44px;
-    height: 45px;
+    width: 75px;
+    height: 75px;
     background: url('http://icons.iconarchive.com/icons/iconsmind/outline/512/Beer-icon.png');
     background-size: contain;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .08);
@@ -174,8 +187,8 @@ body {
     }
   }
     .crowd {
-      width: 44px;
-      height: 45px;
+      width: 75px;
+      height: 75px;
       background: url('https://d30y9cdsu7xlg0.cloudfront.net/png/8283-200.png');
       background-size: contain;
       box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .08);

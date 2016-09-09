@@ -122,7 +122,7 @@ function yelpController(MyYelpApi, $http) {
       // console.log(data.businesses[i].name, data.businesses[i].location)
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/bars',
+      url: 'https://fanstop-backend.herokuapp.com/api/bars',
       data: data.businesses[i]
     }).then(getBars());
     }
@@ -153,7 +153,7 @@ function yelpController(MyYelpApi, $http) {
   if (bar.newVote === "") {
     $log.info("You must choose a category!");
   } else {
-    $http.put('http://localhost:3000/api/bars/' + bar._id, bar.newVote).then(function(response) {
+    $http.put('https://fanstop-backend.herokuapp.com/api/bars' + bar._id, bar.newVote).then(function(response) {
       console.log(response)
     }, function(errRes) {
       console.log('Error updating bar!', errRes);
@@ -162,13 +162,14 @@ function yelpController(MyYelpApi, $http) {
 }
 
 function getBars() {
-  $http.get('http://localhost:3000/api/bars').then(function(response) {
+  $http.get('https://fanstop-backend.herokuapp.com/api/bars').then(function(response) {
     self.bars = response.data.bars;
 
   })
 }
 
 function initialize() {
+  document.getElementById('getmap').classList.add("hidden")
   var markers = [];
   var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 34.0195, lng: -118.4912},
@@ -177,95 +178,114 @@ function initialize() {
           });
           // Create the search box and link it to the UI element.
           /// adrianna's code given to me repurposed.
-  $http.get('http://localhost:3000/api/bars').then(function(response) {
+  $http.get('https://fanstop-backend.herokuapp.com/api/bars').then(function(response) {
     self.bars = response.data.bars;
                 var lat;
                 var lng;
                 var latLng;
+                var name;
+                var bounds = new google.maps.LatLngBounds();
+
                 // console.log(response)
                 for(var i = 0; i < response.data.bars.length; i++) {
                   // console.log(response.data.bars[i].lat)
                   lat = response.data.bars[i].lat;
                   lng = response.data.bars[i].lng;
+                  name = response.data.bars[i].name;
                   // console.log (lat, lng)
-                  latLng = {lat: lat , lng: lng }
+                  latLng = {lat: lat , lng: lng}
+                  var image = {
+                          url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
+                          size: new google.maps.Size(71, 71),
+                          origin: new google.maps.Point(0, 0),
+                          anchor: new google.maps.Point(17, 34),
+                          scaledSize: new google.maps.Size(25, 25)
+                        };
+
+
 
                   var marker = new google.maps.Marker({
                     position: latLng,
+                    name: name,
+                    icon: image,
                     map: map,
                     title: 'Place'
                   })
+                  var addressInfo = name|| "No host defined :("
+                  var infowindow = new google.maps.InfoWindow({
+                     content: addressInfo
+                  });
+                //   markers.push(new google.maps.Marker({
+                //    map: map,
+                //    icon: image,
+                //    title: name,
+                //    position: latLng
+                //  }));
+                //  console.log(markers)
+           marker.addListener('click', function() {
+            infowindow.open(map, marker)
+            console.log(marker);
+          });
+                  // var contentString = '<div id="content">'+
+                  //                     '<div id="siteNotice">'+
+                  //                     '</div>'+
+                  //                     '<h1 id="firstHeading" class="firstHeading">Place</h1>'+
+                  //                     '<div id="bodyContent">'+
+                  //                     '<p>USER QUERY CODE HERE</p>'+
+                  //                     '</div>'+
+                  //                     '</div>';
+                  // console.log(response.data.bars[i].name)
 
                   // console.log(lng)
                   // console.log("LAT LNG:")
                   // console.log(latLng)
-                }
                   // markers = [];
-
-          //         var infowindow = new google.maps.InfoWindow({
-          //            content:
-          //         });
-          //  marker.addListener('click', function() {
-          //   infowindow.open(map, marker);
-          // });
-
-           marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-        })
-        // }).then(
-        //   // searchBox.addListener('places_changed', function() {
-        //   //   var places = searchBox.getPlaces();
-        //   //   if (places.length == 0) {
-        //   //     return;
-        //   //   }
-        //     // Clear out the old markers.
-        //   //   function getMarkers (marker) {
-        //   //   for(var i = 0; i < markers.length; i++) {
-        //   //       marker.setMap(null);
-        //   //   }
-        //   // }
-        //     // markers = [];
-        //     // markers.forEach(function(marker) {
-        //     //   marker.setMap(null);
-        //     // });
-        //     // markers = [];
-        //     // For each place, get the icon, name and location.
-        //     function createMarkers(places) {
-        //       console.log(places)
-        //       var bounds = new google.maps.LatLngBounds();
-        //       var placesList = document.getElementById('places');
-        //
-        //       for (var i = 0, place; place = places[i]; i++) {
-        //         var image = {
-        //           url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
-        //           size: new google.maps.Size(71, 71),
-        //           origin: new google.maps.Point(0, 0),
-        //           anchor: new google.maps.Point(17, 34),
-        //           scaledSize: new google.maps.Size(25, 25)
-        //         };
-        //         markers.push(new google.maps.Marker({
-        //          map: map,
-        //          icon: image,
-        //          title: place.name,
-        //          position: place.geometry.location
-        //        }));
-        //         console.log(markers)
-        //         // var marker = new google.maps.Marker({
-        //         //   map: map,
-        //         //   icon: image,
-        //         //   title: place.name,
-        //         //   position: place.geometry.location
-        //         // });
-        //
-        //         // placesList.innerHTML += '<li>' + place.name + '</li>';
-        //
-        //         bounds.extend(place.geometry.location);
-        //       }
-        //       map.fitBounds(bounds);
-        //     })
-          // }
+                  // bounds.extend(place.geometry.location);
 
         }
+        })
+
+          //   function createMarkers(name) {
+          //     console.log(name)
+          //     var bounds = new google.maps.LatLngBounds();
+          //     // var nameList = document.getElementById('name');
+          //
+          //     for (var i = 0, place; place = name[i]; i++) {
+          //       var image = {
+          //         url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
+          //         size: new google.maps.Size(71, 71),
+          //         origin: new google.maps.Point(0, 0),
+          //         anchor: new google.maps.Point(17, 34),
+          //         scaledSize: new google.maps.Size(25, 25)
+          //       };
+          //       markers.push(new google.maps.Marker({
+          //        map: map,
+          //        icon: image,
+          //        title: place.name,
+          //        position: place.geometry.location
+          //      }));
+          //       console.log(markers)
+          //       if (place.geometry.viewport) {
+          //         // Only geocodes have viewport.
+          //         bounds.union(place.geometry.viewport);
+          //       } else {
+          //         bounds.extend(place.geometry.location);
+          //       }
+          //       // var marker = new google.maps.Marker({
+          //       //   map: map,
+          //       //   icon: image,
+          //       //   title: place.name,
+          //       //   position: place.geometry.location
+          //       // });
+          //
+          //       // placesList.innerHTML += '<li>' + place.name + '</li>';
+          //
+          //       bounds.extend(place.geometry.location);
+          //     }
+          //     map.fitBounds(bounds);
+          //   }
+          // }
+        }
       }
+
             // }

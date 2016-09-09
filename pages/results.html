@@ -1,6 +1,6 @@
+<button ng-click='gMaps.initialize()' id='getmap' name="button">Get Map!</button>
 <div id='map'>
 </div>
-<button ng-click='gMaps.initialize()' name="button"></button>
 <ul id='places'>
 <li ng-repeat="business in gMaps.bars" style='width: 500px; height:75px;'>  Bar Name: {{business.name}} <br> Address: {{business.address}}
 <span> <select ng-model="business.newVote" ng-options="team.name for team in gMaps.teams"> </select> <img ng-src='{{business.votes.icon}}'style='height:50px; width:50px; float:right;'>
