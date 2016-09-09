@@ -14,7 +14,7 @@ function MyYelpApi($http) {
       "retrieveYelp": function(name, callback) {
         console.log('clicked')
         var method = 'GET';
-        var url = 'http://api.yelp.com/v2/search';
+        var url = 'https://api.yelp.com/v2/search';
         var params = {
           callback: 'angular.callbacks._0',
           location: 'Santa+Monica',
