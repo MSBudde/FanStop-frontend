@@ -153,7 +153,7 @@ function yelpController(MyYelpApi, $http) {
   if (bar.newVote === "") {
     $log.info("You must choose a category!");
   } else {
-    $http.put('https://fanstop-backend.herokuapp.com/api/bars' + bar._id, bar.newVote).then(function(response) {
+    $http.put('https://fanstop-backend.herokuapp.com/api/bars/' + bar._id, bar.newVote).then(function(response) {
       console.log(response)
     }, function(errRes) {
       console.log('Error updating bar!', errRes);
