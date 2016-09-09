@@ -1,0 +1,25 @@
+{
+  "name": "FanStop-frontend",
+  "homepage": "https://github.com/MSBudde/FanStop-frontend",
+  "authors": [
+    "Michael Budde <MICHAEL.s.budde@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-filter": "^0.5.11",
+    "angular-google-maps": "^2.3.4",
+    "just.randomstring": "*",
+    "ngGeolocation": "^0.0.8",
+    "ngmap": "^1.17.6",
+    "oauth-signature": "^1.3.1"
+  }
+}
