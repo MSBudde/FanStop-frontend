@@ -1,1 +1,1 @@
-angular.module('fanStop', ['ui.router','angular.filter' ])
+angular.module('fanStop', ['ui.router'])
