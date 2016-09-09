@@ -85,8 +85,8 @@ body {
   font-size: 11px;
   height: 100%;
   margin: 0;
-  /*background: url('http://i.imgur.com/K1NPmPV.jpg');
-  background-size: cover;*/
+  background: url('https://i.imgur.com/K1NPmPV.jpg');
+  background-size: cover;
 }
 
 .wrap {
@@ -119,8 +119,9 @@ body {
 }
 
 #getmap {
-  height: 400px;
-  width: 600px;
+  height: 70px;
+  width: 200px;
+  margin-left: 150px;
 
 }
 
@@ -131,7 +132,7 @@ body {
 .football {
     width: 75px;
     height: 75px;
-    background: url('https://cdn3.iconfinder.com/data/icons/school-icons-3/512/Football-512.png');
+    background: url('https://maxcdn.icons8.com/Share/icon/Cinema//sport1600.png');
     background-size: contain;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, .08);
     display: inline-block;
