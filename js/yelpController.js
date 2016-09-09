@@ -14,6 +14,7 @@ function yelpController(MyYelpApi, $http) {
       team: ''
     }]
   }
+  self.initialize = initialize;
   self.teams = [{voteNum: 0,
                 name:'49ers',
                 icon:'http://icons.iconarchive.com/icons/astahrr/nfl/128/49ers-icon.png'},
@@ -166,4 +167,105 @@ function getBars() {
 
   })
 }
-}
+
+function initialize() {
+  var markers = [];
+  var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 34.0195, lng: -118.4912},
+            zoom: 13,
+            mapTypeId: 'roadmap'
+          });
+          // Create the search box and link it to the UI element.
+          /// adrianna's code given to me repurposed.
+  $http.get('http://localhost:3000/api/bars').then(function(response) {
+    self.bars = response.data.bars;
+                var lat;
+                var lng;
+                var latLng;
+                // console.log(response)
+                for(var i = 0; i < response.data.bars.length; i++) {
+                  // console.log(response.data.bars[i].lat)
+                  lat = response.data.bars[i].lat;
+                  lng = response.data.bars[i].lng;
+                  // console.log (lat, lng)
+                  latLng = {lat: lat , lng: lng }
+
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: 'Place'
+                  })
+
+                  // console.log(lng)
+                  // console.log("LAT LNG:")
+                  // console.log(latLng)
+                }
+                  // markers = [];
+
+          //         var infowindow = new google.maps.InfoWindow({
+          //            content:
+          //         });
+          //  marker.addListener('click', function() {
+          //   infowindow.open(map, marker);
+          // });
+
+           marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        })
+        // }).then(
+        //   // searchBox.addListener('places_changed', function() {
+        //   //   var places = searchBox.getPlaces();
+        //   //   if (places.length == 0) {
+        //   //     return;
+        //   //   }
+        //     // Clear out the old markers.
+        //   //   function getMarkers (marker) {
+        //   //   for(var i = 0; i < markers.length; i++) {
+        //   //       marker.setMap(null);
+        //   //   }
+        //   // }
+        //     // markers = [];
+        //     // markers.forEach(function(marker) {
+        //     //   marker.setMap(null);
+        //     // });
+        //     // markers = [];
+        //     // For each place, get the icon, name and location.
+        //     function createMarkers(places) {
+        //       console.log(places)
+        //       var bounds = new google.maps.LatLngBounds();
+        //       var placesList = document.getElementById('places');
+        //
+        //       for (var i = 0, place; place = places[i]; i++) {
+        //         var image = {
+        //           url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
+        //           size: new google.maps.Size(71, 71),
+        //           origin: new google.maps.Point(0, 0),
+        //           anchor: new google.maps.Point(17, 34),
+        //           scaledSize: new google.maps.Size(25, 25)
+        //         };
+        //         markers.push(new google.maps.Marker({
+        //          map: map,
+        //          icon: image,
+        //          title: place.name,
+        //          position: place.geometry.location
+        //        }));
+        //         console.log(markers)
+        //         // var marker = new google.maps.Marker({
+        //         //   map: map,
+        //         //   icon: image,
+        //         //   title: place.name,
+        //         //   position: place.geometry.location
+        //         // });
+        //
+        //         // placesList.innerHTML += '<li>' + place.name + '</li>';
+        //
+        //         bounds.extend(place.geometry.location);
+        //       }
+        //       map.fitBounds(bounds);
+        //     })
+          // }
+
+        }
+      }
+            // }
