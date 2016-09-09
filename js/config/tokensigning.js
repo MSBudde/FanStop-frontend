@@ -9,8 +9,8 @@ function tokenSigning($log, tokens) {
   }
 
   function signinWithToken(request) {
-    if (tokenSigning.retrieve()) {
-      request.headers['Authorization'] = `Bearer ${tokens.retrieve}`;
+    if (tokens.retrieve()) {
+      request.headers['Authorization'] = `Bearer ${tokens.retrieve()}`;
 
     }
     return request;

@@ -20,7 +20,7 @@ function authService($log, token, $http) {
   function logIn(data) {
     var promise = $http({
       method: 'POST',
-      url: 'https://fanstop-backend.herokuapp.com/api/token',
+      url: 'http://localhost:3000/api/token',
       data: data,
       headers: {
         'Content-Type':'application/json'

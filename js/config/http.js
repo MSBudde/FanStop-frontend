@@ -4,8 +4,8 @@ angular.module('fanStop')
 configure.$inject = ['$httpProvider'];
 
 function configure($httpProvider) {
-  $httpProvider.interceptors.push("jsonHeadersService");
-  $httpProvider.interceptors.push("tokenSigningService");
+  $httpProvider.interceptors.push("jsonHead");
+  $httpProvider.interceptors.push("tokenSigning");
 
   console.log('http', $httpProvider.interceptors)
 }

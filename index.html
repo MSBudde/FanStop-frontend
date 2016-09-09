@@ -9,13 +9,15 @@
   <!-- If you must use outside libs that aren't Angular-specific, include them BEFORE Angular. -->
   <script src="js/jwt-decode.2.0.1.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  <!-- <script data-require="lodash.js@*" data-semver="3.10.0" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
+   <script data-require="angular-simple-logger@*" data-semver="0.0.2" src="https://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
+   <script data-require="angular-google-maps@*" data-semver="2.0.11" src="//rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.min.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
   <script src="/bower_components/oauth-signature/dist/oauth-signature.js"></script>
   <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
   <script src="/bower_components/just.randomstring/just.randomstring.js"></script>
-  <!-- <script src='/path/to/angular-simple-logger/angular-simple-logger[.min].js'></script>
-  <script src='/path/to/angular-google-maps[.min].js'></script> -->
+  <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFuqFzNpJnxqpGGH4gDIKTD6ENV1Imt2c&libraries=places"></script>
 
 
@@ -34,6 +36,7 @@
     <br>
     <br>
     <h1> FanStop</h1>
+
     <main class="content" ui-view>
       <h2> loading.... </h2>
     </main>
@@ -50,5 +53,8 @@
   <!-- <script src="js/ngMaps.js" charset="utf-8"></script> -->
   <script src="js/yelpFact.js" charset="utf-8"></script>
   <script src="js/yelpController.js" charset="utf-8"></script>
+  <script src="js/config/http.js" charset="utf-8"></script>
+  <script src="js/config/jsonHeaders.js" charset="utf-8"></script>
+  <script src="js/config/tokensigning.js" charset="utf-8"></script>
 </body>
 </html>
