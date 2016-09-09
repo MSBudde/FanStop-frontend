@@ -35,6 +35,7 @@ function signInController($log, authService, userService, $state) {
       function(err) {
         if (err.status === 409) self.conflict = true;
         $log.info('Error:', err)
+        
       }
     );
   }

@@ -127,27 +127,6 @@ function yelpController(MyYelpApi, $http) {
     }).then(getBars());
     }
 })
-
-
-// self.map = {
-//      center: { latitude: 14.8282, longitude: 122.5795 },
-//      zoom: 1
-//   };
-//
-//   self.markers = [];
-//
-//   $http.get('https://fanstop-backend.herokuapp.com/api/bars')
-//   .then(function(response) {
-//     console.log(response.data.bars)
-//     _.forEach(response.data.bars, function(marker) {
-//       marker.coords = {
-//         latitude: response.data.bars.lat,
-//         longitude: response.data.bars.lng
-//       }
-//     })
-//    self.markers = markers;
-//   })
-
   function updateBar(bar) {
     console.log(bar.newVote)
   if (bar.newVote === "") {
@@ -160,7 +139,6 @@ function yelpController(MyYelpApi, $http) {
     }).then(getBars);
   }
 }
-
 function getBars() {
   $http.get('https://fanstop-backend.herokuapp.com/api/bars').then(function(response) {
     self.bars = response.data.bars;
@@ -180,112 +158,48 @@ function initialize() {
           /// adrianna's code given to me repurposed.
   $http.get('https://fanstop-backend.herokuapp.com/api/bars').then(function(response) {
     self.bars = response.data.bars;
-                var lat;
-                var lng;
-                var latLng;
-                var name;
-                var bounds = new google.maps.LatLngBounds();
+    var lat;
+    var lng;
+    var latLng;
+    var name;
+    var bounds = new google.maps.LatLngBounds();
 
-                // console.log(response)
-                for(var i = 0; i < response.data.bars.length; i++) {
-                  // console.log(response.data.bars[i].lat)
-                  lat = response.data.bars[i].lat;
-                  lng = response.data.bars[i].lng;
-                  name = response.data.bars[i].name;
-                  // console.log (lat, lng)
-                  latLng = {lat: lat , lng: lng}
-                  var image = {
-                          url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
-                          size: new google.maps.Size(71, 71),
-                          origin: new google.maps.Point(0, 0),
-                          anchor: new google.maps.Point(17, 34),
-                          scaledSize: new google.maps.Size(25, 25)
-                        };
+    // console.log(response)
+    for(var i = 0; i < response.data.bars.length; i++) {
+      // console.log(response.data.bars[i].lat)
+      lat = response.data.bars[i].lat;
+      lng = response.data.bars[i].lng;
+      name = response.data.bars[i].name;
+      // console.log (lat, lng)
+      latLng = {lat: lat , lng: lng}
+      var image = {
+              url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
 
 
 
-                  var marker = new google.maps.Marker({
-                    position: latLng,
-                    name: name,
-                    icon: image,
-                    map: map,
-                    title: 'Place'
-                  })
-                  var addressInfo = name|| "No host defined :("
-                  var infowindow = new google.maps.InfoWindow({
-                     content: addressInfo
-                  });
-                //   markers.push(new google.maps.Marker({
-                //    map: map,
-                //    icon: image,
-                //    title: name,
-                //    position: latLng
-                //  }));
-                //  console.log(markers)
-           marker.addListener('click', function() {
-            infowindow.open(map, marker)
-            console.log(marker);
-          });
-                  // var contentString = '<div id="content">'+
-                  //                     '<div id="siteNotice">'+
-                  //                     '</div>'+
-                  //                     '<h1 id="firstHeading" class="firstHeading">Place</h1>'+
-                  //                     '<div id="bodyContent">'+
-                  //                     '<p>USER QUERY CODE HERE</p>'+
-                  //                     '</div>'+
-                  //                     '</div>';
-                  // console.log(response.data.bars[i].name)
+      var marker = new google.maps.Marker({
+        position: latLng,
+        name: name,
+        icon: image,
+        map: map,
+        title: 'Place'
+      })
+      var addressInfo = name|| "No host defined :("
+      var infowindow = new google.maps.InfoWindow({
+         content: addressInfo
+      });
 
-                  // console.log(lng)
-                  // console.log("LAT LNG:")
-                  // console.log(latLng)
-                  // markers = [];
-                  // bounds.extend(place.geometry.location);
+      marker.addListener('click', function() {
+      infowindow.open(map, marker)
+      console.log(marker);
+      });
+    }
+  })
 
-        }
-        })
-
-          //   function createMarkers(name) {
-          //     console.log(name)
-          //     var bounds = new google.maps.LatLngBounds();
-          //     // var nameList = document.getElementById('name');
-          //
-          //     for (var i = 0, place; place = name[i]; i++) {
-          //       var image = {
-          //         url: 'https://cdn1.iconfinder.com/data/icons/food-drinks-4/96/Beer-512.png',
-          //         size: new google.maps.Size(71, 71),
-          //         origin: new google.maps.Point(0, 0),
-          //         anchor: new google.maps.Point(17, 34),
-          //         scaledSize: new google.maps.Size(25, 25)
-          //       };
-          //       markers.push(new google.maps.Marker({
-          //        map: map,
-          //        icon: image,
-          //        title: place.name,
-          //        position: place.geometry.location
-          //      }));
-          //       console.log(markers)
-          //       if (place.geometry.viewport) {
-          //         // Only geocodes have viewport.
-          //         bounds.union(place.geometry.viewport);
-          //       } else {
-          //         bounds.extend(place.geometry.location);
-          //       }
-          //       // var marker = new google.maps.Marker({
-          //       //   map: map,
-          //       //   icon: image,
-          //       //   title: place.name,
-          //       //   position: place.geometry.location
-          //       // });
-          //
-          //       // placesList.innerHTML += '<li>' + place.name + '</li>';
-          //
-          //       bounds.extend(place.geometry.location);
-          //     }
-          //     map.fitBounds(bounds);
-          //   }
-          // }
-        }
-      }
-
-            // }
+}
+}
